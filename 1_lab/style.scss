@@ -1,35 +1,186 @@
-$primary-color: white;
-$secondary-color: rgb(193, 209, 173);
+@use 'sass:list';
 
-html, body {
+$primary-color: white;
+$secondary-color: rgb(218, 224, 188);
+$border-color: black;
+$footer-height: 100px;
+$card-colors: lightskyblue, lightsalmon, lightcoral;
+
+body {
     font-size: 16px;
+    font-family: sans-serif;
+
     margin: 0;
     padding: 0;
+
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+@media only screen and (min-width: 1024px) {
+    .col-lg-4 {
+        width: 33.33333333%;
+    }
+
+    .link-container {
+        padding-top: 10px;
+        margin-left: auto;
+
+        display: flex;
+        justify-content: space-around;
+        a {
+            margin: 10px 20px;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    .link-button {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1023px) {
+    .link-container {
+        display: none;
+    }
+
+    .link-button {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 40px;
+        height: 40px;
+        padding: 20px;
+        margin: 10px 10px 10px auto;
+        
+        background-color: $secondary-color;
+        border: 2px solid $border-color;
+        border-radius: 25%;
+
+        hr {
+            box-sizing: border-box;
+            margin: 0;
+            width: 100%;
+            border: 1px solid $border-color; 
+        }
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1023px) {
+    .col-md-12 {
+        width: 100%;
+    }
+    .col-md-6 {
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 599px) {
+    .col-sm-12 {
+        width: 100%;
+    }    
 }
 
 nav {
-    // position: fixed;
-    // width: 100%;
-    // margin: 0;
-    // background-color:bisque;
+    font-family: serif;
+
+    position: sticky;
+    top: 0;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 10px 30px;
+    display: flex;
+
+    background-color: $primary-color;
+
+    div.header {
+        display: flex;
+        img {
+            padding-right: 10px;
+        }
+        h1 {
+            white-space: nowrap;
+            
+            @media only screen and (max-width: 599px) {
+                display: none;
+            }
+        }
+    }
 }
 
-main {
-    height: auto;
+main {    
+    flex: 1;
+    
+    div.container {
+        display: flex;
+        flex-wrap: wrap;
+
+        // More hard-coded approach
+        @for $i from 1 through 3 {
+            div:nth-child(#{$i}) .card h2 {
+                background-color: list.nth($card-colors, $i);
+            }
+        }
+    }
+}
+
+// More flexible approach
+.first-header {
+    background-color: list.nth($card-colors, 1);
+}
+.second-header {
+    background-color: list.nth($card-colors, 2);
+}
+.third-header {
+    background-color: list.nth($card-colors, 3);
 }
 
 footer {
-    position: fixed;
-    bottom: 0;
     width: 100%;
+    min-height: $footer-height;
 
     background-color: $secondary-color;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    p {
+        font-size: 0.8rem;
+        margin: 0.1em;
+    }
 }
 
 h1 {
    font-size: 2rem; 
 }
 
-h1 {
-    font-size: 1.5rem;
+.card {
+    margin: 40px;
+    display: flex;
+    flex-direction: column;
+
+    background-color: $secondary-color;
+    border: 2px solid $border-color;
+
+    h2 {
+        font-size: 1.5rem;
+        text-align: center;
+        align-self: flex-end;
+        min-width: 180px; 
+        margin: 0px;
+        padding: 10px;
+
+        border-left: 2px solid $border-color;
+        border-bottom: 2px solid $border-color;
+    }
+
+    p {
+        padding: 28px;
+    }
 }
