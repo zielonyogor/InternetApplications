@@ -1,0 +1,35 @@
+$primary-color: white;
+$secondary-color: rgb(193, 209, 173);
+
+html, body {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    // position: fixed;
+    // width: 100%;
+    // margin: 0;
+    // background-color:bisque;
+}
+
+main {
+    height: auto;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+    background-color: $secondary-color;
+}
+
+h1 {
+   font-size: 2rem; 
+}
+
+h1 {
+    font-size: 1.5rem;
+}
