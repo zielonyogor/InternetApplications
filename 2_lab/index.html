@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collection of mangas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Welcome to my mangas collection</h1>
+    <button class="btn-primary" id="add-btn" type="button">Add new manga</button>
+    <div class="table-container">
+        <table>
+            <thead>
+                <th>Author</th>
+                <th>Title</th>
+                <th></th>
+            </thead>
+            <tbody id="manga-table">
+                <tr id="row-template" class="hidden">
+                    <td class="td-author">
+                        <input type="text" name="manga-author">
+                    </td>
+                    <td class="td-title">
+                        <input type="text" name="manga-title">
+                    </td>
+                    <td class="td-btn">
+                        <button class="btn-secondary change" type="button" data-state="save">Save</button>
+                        <button class="btn-secondary delete" type="button">Delete</button>
+                    </td>
+                </tr>
+<!-- 
+                <tr>
+                    <td class="td-author">
+                        <input type="text" name="manga-author" value="Author">
+                    </td>
+                    <td class="td-title">
+                        <input type="text" name="manga-title" value="Title">
+                    </td>
+                    <td class="td-btn">
+                        <button class="btn-secondary change" type="button" data-state="save">Save</button>
+                        <button class="btn-secondary delete" type="button">Delete</button>
+                    </td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
