@@ -1,0 +1,16 @@
+{
+  "name": "2_lab_web_scraper",
+  "version": "1.0.0",
+  "description": "Web scraper for cost of items",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Hello\""
+  },
+  "author": "Katarzyna Jaromirska",
+  "license": "ISC",
+  "types": "module",
+  "type": "module",
+  "dependencies": {
+    "puppeteer": "^24.4.0"
+  }
+}
