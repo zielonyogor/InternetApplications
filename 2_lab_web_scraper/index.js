@@ -1,5 +1,45 @@
 import puppeteer from "puppeteer";
 
+// Function to get details of manga from its page
+async function getMangaDetails(link) {
+    const mangaPage = await browser.newPage();
+
+    try {
+        await mangaPage.goto(link, { waitUntil: "domcontentloaded" });
+    } catch (error) {
+        console.error(`Error navigating to ${link}:`, error);
+        await mangaPage.close();
+        return null;
+    }
+
+    const pageDetails = await mangaPage.evaluate(() => {
+        const header = document.getElementById("pdp-header-info").querySelector("h1");
+        if(header === null) return null;
+        const title = header.textContent.trim();
+        
+        const details = document.getElementById("ProductDetailsTab");
+        
+        const td = details.querySelector("table > tbody:first-of-type > tr:nth-child(5) > td");
+        if(td === null) return null;
+        const pages = parseInt(td.textContent.trim());
+        
+        const priceElement = document.querySelector("#pdp-cur-price");
+        if(priceElement === null) return null;
+        const price = parseFloat(priceElement.textContent.trim().replace("$", ""));
+        
+        
+        return { title, pages, price };
+    });
+
+    await mangaPage.close();
+
+    return pageDetails;
+}
+
+// ---------- Main -------------
+
+let mangasDetails = new Array();
+
 const browser = await puppeteer.launch({
     headless: false,
     defaultViewport: null,
@@ -11,42 +51,55 @@ await page.goto("https://www.barnesandnoble.com/b/books/graphic-novels-comics-ma
     waitUntil: "domcontentloaded",
 });
 
-const mangas = await page.evaluate(() => {
-    const mangasList = document.querySelector(".product-shelf-tile");
+const mangaLinks = [];
+let pages = 5;
 
-    // return Array.from(mangasList).map((manga) => {
-    //     manga.querySelector(".product-shelf-info > .product-shelf-title > a").href;
-    // });
-
-    return mangasList.querySelector(".product-shelf-info > .product-shelf-title > a").href;
-});
-
-if (mangas) {
-    const mangaPage = await browser.newPage();
-    await mangaPage.goto(mangas, {
-        waitUntil: "domcontentloaded",
+for(let i = 0; i < pages; i++) {
+    const pageLinks = await page.evaluate(() => {
+        const mangasList = document.querySelectorAll(".product-shelf-tile");
+    
+        return Array.from(mangasList, (manga) => {
+            const linkElement = manga.querySelector(".product-shelf-info > .product-shelf-title > a");
+            console.log(linkElement?.href);
+            return linkElement ? linkElement.href : null;
+        }).filter(link => link !== null);
     });
 
-    const pageDetails = await mangaPage.evaluate(() => {
-        const header = document.getElementById("pdp-header-info").querySelector("h1");
-        const title = header ? header.textContent.trim() : "No title found";
+    mangaLinks.push(...pageLinks);
 
-        const details = document.getElementById("ProductDetailsTab");
-
-        const td = details.querySelector("table > tbody:first-of-type > tr:nth-child(5) > td");
-        const pages = td ? td.textContent.trim() : "No page count found";
-
-        const priceElement = document.querySelector("#pdp-cur-price");
-        const price = priceElement ? priceElement.textContent.trim() : "No price found";
-
-        return { title, pages, price };
+    const nextButton = await page.evaluate(() =>  {
+        next = document.querySelector("a.next-button");
+        return next ? next : null
     });
 
-    console.log(`Found title: ${pageDetails.title}`);
-    console.log(`Found pages: ${pageDetails.pages}`);
-    console.log(`Found price: ${pageDetails.price}`);
+    if(nextButton === null) break;
+
+    await Promise.all([
+        page.waitForNavigation({ waitUntil: "domcontentloaded" }),
+        page.click("a.next-button"),
+    ]);   
+}
+
+if (mangaLinks.length > 0) {
+    for(const link of mangaLinks) {
+        let details = await getMangaDetails(link);
+
+        if(details === null) continue;
+        
+        mangasDetails.push({
+            "title": details.title,
+            "pricePageRatio": (details.price / details.pages).toFixed(3)
+        });
+    };
     
 } else {
     console.log("No manga found!");
 }
-//await browser.close();
+
+await browser.close();
+
+mangasDetails.sort((a, b) => a.pricePageRatio - b.pricePageRatio);
+console.log("Found mangas: ");
+mangasDetails.forEach((detail) => {
+    console.log(`${detail.title} - ${detail.pricePageRatio}`);
+});
