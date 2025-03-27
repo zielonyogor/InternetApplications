@@ -14,6 +14,10 @@ await page.goto("https://www.barnesandnoble.com/b/books/graphic-novels-comics-ma
 const mangas = await page.evaluate(() => {
     const mangasList = document.querySelector(".product-shelf-tile");
 
+    // return Array.from(mangasList).map((manga) => {
+    //     manga.querySelector(".product-shelf-info > .product-shelf-title > a").href;
+    // });
+
     return mangasList.querySelector(".product-shelf-info > .product-shelf-title > a").href;
 });
 
@@ -24,12 +28,23 @@ if (mangas) {
     });
 
     const pageDetails = await mangaPage.evaluate(() => {
+        const header = document.getElementById("pdp-header-info").querySelector("h1");
+        const title = header ? header.textContent.trim() : "No title found";
+
         const details = document.getElementById("ProductDetailsTab");
 
-        return details.querySelector("table > tbody:first-of-type > tr:nth-child(5) > td")?.textContent;
+        const td = details.querySelector("table > tbody:first-of-type > tr:nth-child(5) > td");
+        const pages = td ? td.textContent.trim() : "No page count found";
+
+        const priceElement = document.querySelector("#pdp-cur-price");
+        const price = priceElement ? priceElement.textContent.trim() : "No price found";
+
+        return { title, pages, price };
     });
 
-    console.log(`Found: ${pageDetails}`)
+    console.log(`Found title: ${pageDetails.title}`);
+    console.log(`Found pages: ${pageDetails.pages}`);
+    console.log(`Found price: ${pageDetails.price}`);
     
 } else {
     console.log("No manga found!");
