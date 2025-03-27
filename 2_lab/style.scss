@@ -1,3 +1,5 @@
+@use "sass:color";
+
 $primary-font-color: rgb(21, 0, 34);
 $primary-color: rgb(250, 235, 235);
 
@@ -29,15 +31,20 @@ h1 {
     font-size: 1.2rem;
     font-weight: 600;
     color: $primary-font-color;
-
+    background-color: $primary-color;
+    
     border: none;
     border-radius: 8px;
-
-    transition: transform 0.7s ease-in-out;
+    
+    transition-property: transform, color; 
+    transition-duration: .7s; 
+    transition-timing-function: ease-in-out;
 }
 
 .btn-primary:hover {
     transform: scale(1.2);
+    color: purple;
+    background-color: $primary-color;
 }
 
 .table-container {
@@ -57,6 +64,12 @@ th, td {
     padding: 0.4rem;
 }
 
+th {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: $primary-font-color;
+}
+
 th:nth-child(1) {
     width: 220px;
 }
@@ -69,8 +82,23 @@ th:nth-child(3) {
     width: 160px;
 }
 
+tr {
+    height: 50px;
+}
+
 .td-author, .td-title {
     height: 100%;
+
+    input {
+        box-sizing: border-box;
+        padding: 0 8px;
+        font-size: 1rem;
+        color: $primary-font-color;
+        border: none;
+        background-color: color.adjust($primary-color, $lightness: -5%);
+        height: 100%;
+        width: 100%;
+    }
 }
 
 .td-btn {

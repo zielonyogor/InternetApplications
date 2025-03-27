@@ -32,9 +32,9 @@ function deleteRow(caller) {
 function changeRow(button, caller) {
     console.log(button.dataset.state);
     if(button.dataset.state === "save") {
+        if(saveRow(caller) === -1) return;
         button.dataset.state = "edit";
         button.innerText = "Edit";
-        saveRow(caller);
     }
     else {
         button.dataset.state = "save";
@@ -47,6 +47,15 @@ function saveRow(caller) {
     console.log("saving now");
     let inputs = caller.querySelectorAll("input");
     
+    // Firstly check all
+    for (let input of inputs) {
+        if (input.value.trim() === "") {
+            alert("All fields must be filled before saving!");
+            return -1;
+        }
+    }
+    
+    // Then disable
     inputs.forEach(input => {
         input.disabled = true;
     });

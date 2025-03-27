@@ -23,13 +23,18 @@ h1 {
   font-size: 1.2rem;
   font-weight: 600;
   color: rgb(21, 0, 34);
+  background-color: rgb(250, 235, 235);
   border: none;
   border-radius: 8px;
-  transition: transform 0.7s ease-in-out;
+  transition-property: transform, color;
+  transition-duration: 0.7s;
+  transition-timing-function: ease-in-out;
 }
 
 .btn-primary:hover {
   transform: scale(1.2);
+  color: purple;
+  background-color: rgb(250, 235, 235);
 }
 
 .table-container {
@@ -49,6 +54,12 @@ th, td {
   padding: 0.4rem;
 }
 
+th {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: rgb(21, 0, 34);
+}
+
 th:nth-child(1) {
   width: 220px;
 }
@@ -61,8 +72,22 @@ th:nth-child(3) {
   width: 160px;
 }
 
+tr {
+  height: 50px;
+}
+
 .td-author, .td-title {
   height: 100%;
+}
+.td-author input, .td-title input {
+  box-sizing: border-box;
+  padding: 0 8px;
+  font-size: 1rem;
+  color: rgb(21, 0, 34);
+  border: none;
+  background-color: rgb(244.9, 214.6, 214.6);
+  height: 100%;
+  width: 100%;
 }
 
 .td-btn {
