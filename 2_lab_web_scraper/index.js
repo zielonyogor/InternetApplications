@@ -88,7 +88,7 @@ if (mangaLinks.length > 0) {
         
         mangasDetails.push({
             "title": details.title,
-            "pricePageRatio": (details.price / details.pages).toFixed(3)
+            "pricePageRatio": details.pages > 0 ? (details.price / details.pages).toFixed(3) : "N/A"
         });
     };
     
