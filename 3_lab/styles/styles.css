@@ -1,0 +1,99 @@
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.page-title {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  margin-bottom: 20px;
+}
+
+.col-7 {
+  width: 58.3333%;
+}
+
+.col-5 {
+  width: 41.6666%;
+}
+
+.list-container {
+  box-sizing: border-box;
+  background-color: cadetblue;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+}
+.list-container .list-panel {
+  background-color: aliceblue;
+  padding: 10px;
+}
+.list-container .list-panel .list-item {
+  margin: 20px;
+  padding: 8px;
+  border: 2px solid black;
+}
+.list-container .list-panel .list-item p:nth-child(1) {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+.list-container .list-panel .list-item p:nth-child(2) {
+  color: gray;
+}
+
+.details-container {
+  position: fixed;
+  top: 10vh;
+  right: 0;
+}
+
+.details-card {
+  box-sizing: border-box;
+  margin: 100px;
+  padding: 20px;
+  background-color: cadetblue;
+}
+
+.search-bar {
+  box-sizing: border-box;
+  margin: 8px 0px;
+  width: 100%;
+  display: flex;
+}
+.search-bar input {
+  box-sizing: border-box;
+  flex-grow: 1;
+  padding: 8px;
+  border: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.hidden-checkbox {
+  display: none;
+}
+
+.hidden-checkbox:checked + .toggle-content {
+  display: block;
+}
+
+.toggle-content {
+  display: none;
+  z-index: 2;
+  position: absolute;
+  background-color: dimgrey;
+  border: black;
+  border-width: 1px;
+  border-style: solid;
+  padding: 8px;
+}
+
+/*# sourceMappingURL=styles.css.map */

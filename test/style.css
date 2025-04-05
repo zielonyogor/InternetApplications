@@ -1,0 +1,52 @@
+/* The checkbox */
+
+.hidden-checkbox {
+    display: none;
+  }
+  
+  
+  /* The element to show/hide */
+  
+  .toggle-content {
+    display: none;
+    z-index: 2;
+    position: absolute;
+    background-color: dimgrey;
+    color: white;
+    border: black;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 3px;
+  }
+  
+  
+  /* The label that controls the element */
+  
+  .label-toggle {
+    cursor: pointer;
+  }
+  
+  
+  /* Show the element when the checkbox is checked */
+  
+  .hidden-checkbox:checked+.toggle-content {
+    display: block;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    max-height: 100px;
+    padding-right: 10px
+  }
+  
+  li {
+    font-size: small;
+  }
+  
+  li:hover {
+    background-color: darkgrey;
+  }
