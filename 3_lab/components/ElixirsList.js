@@ -4,20 +4,21 @@ const noResultsOutput = `
     <p class="error-list">No elixirs found</p>
 `;
 
-export function ElixirsList(elixirsArray, onElementClick) {
+const loadingOutput = `
+    <p class="loading-msg">Loading elixirs...</p>
+`;
+
+export function ElixirsList() {
     const listElement = document.createElement('div');
     listElement.classList.add('list-panel');
 
-    if(elixirsArray.length === 0) {
-        listElement.innerHTML = noResultsOutput;
-        return listElement;
-    }
-    
-    elixirsArray.forEach(elixir => {
-        listElement.appendChild(ElixirListItem(elixir, onElementClick))
-    });
+    listElement.innerHTML = loadingOutput;
     
     return listElement;
+}
+
+export function ShowLoadingElixirsList(listElement) {
+    listElement.innerHTML = loadingOutput;
 }
 
 export function UpdateElixirsList(newArray, listElement, onElementClick) {

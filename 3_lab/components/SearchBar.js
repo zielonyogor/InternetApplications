@@ -1,7 +1,3 @@
-import {ListFilter} from './ListFilter.js';
-
-let currentArray = new Array();
-
 /**
  * 
  * @param {*} arrayForSearch 
@@ -9,9 +5,7 @@ let currentArray = new Array();
  * @param {*} onSearchResult 
  * @returns Search element
  */
-export function SearchBar(arrayForSearch, searchProperty, filterProperty, filterOptions, onSearchResult) {
-    currentArray = arrayForSearch;
-
+export function SearchBar(arrayForSearch, searchProperty, onSearchResult) {
     const searchElement = document.createElement('div');
     searchElement.innerHTML = `
         <input type="text" id="search-input" placeholder="Search here" />
@@ -19,14 +13,8 @@ export function SearchBar(arrayForSearch, searchProperty, filterProperty, filter
     
     const inputField = searchElement.querySelector('#search-input');
     inputField.addEventListener('input', () => {
-        onSearchResult(showSearchResult(currentArray, searchProperty, inputField.value));
+        onSearchResult(showSearchResult(arrayForSearch, searchProperty, inputField.value));
     });
-
-    const filterElement = ListFilter(currentArray, filterProperty, filterOptions, (array) => {
-        currentArray = array;
-        onSearchResult(showSearchResult(array, searchProperty, inputField.value));
-    });
-    searchElement.appendChild(filterElement);
 
     return searchElement;
 }
@@ -39,8 +27,6 @@ export function SearchBar(arrayForSearch, searchProperty, filterProperty, filter
  * @returns 
  */
 function showSearchResult(array, property, query) {
-    console.log(array);
-    console.log(property);
     const re = new RegExp(`.*${query}.*`);
     return array.filter((item) => re.test(item[property].toLowerCase()));
 }

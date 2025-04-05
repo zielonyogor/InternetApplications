@@ -1,15 +1,20 @@
-// Get all elixirs
-const elixirs = await fetch('https://wizard-world-api.herokuapp.com/Elixirs', {
-    method: 'GET'
-})
-.then(response => response.json());
+// export function getElixirsLength() {
+//     return elixirs.length;
+// }
 
-export function getElixirsLength() {
-    return elixirs.length;
-}
-
-export function getAllElixirs() {
-    return elixirs;
+export async function getAllElixirs() {
+    try {
+        const elixirs = await fetch('https://wizard-world-api.herokuapp.com/Elixirs', {
+            method: 'GET'
+        })
+        .then(response => response.json());
+        return elixirs;
+    }
+    catch (error) {
+        console.error('Failed to fetch:', error);
+        return [];
+    }
+    
 }
 
 /**
