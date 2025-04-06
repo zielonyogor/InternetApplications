@@ -63,7 +63,7 @@ input {
             padding: 12px;
             border: none;
             background-color: $secondary-color;
-            border-bottom: 2px solid black;
+            border: 2px solid black;
         }
     }
     
@@ -107,20 +107,20 @@ input {
     .list-panel {
         background-image: url($page-url);
         padding: 10px;
-    
-        .list-item {
-            margin: 20px;
-            padding: 8px;
-            border: 2px solid black;
+    }
+}
 
-            p:nth-child(1) {
-                font-weight: 700;
-                font-size: 1.2rem;
-            }
-            p:nth-child(2) {
-                color: gray;
-            }
-        }
+.list-item {
+    margin: 20px;
+    padding: 8px;
+    border: 2px solid black;
+
+    p:nth-child(1) {
+        font-weight: 700;
+        font-size: 1.2rem;
+    }
+    p:nth-child(2) {
+        color: gray;
     }
 }
 
@@ -172,6 +172,7 @@ input {
         width: 30px;
         height: 30px;
         border-radius: 50%;
+        background-color: $secondary-color;
         text-align: center;
     }
 

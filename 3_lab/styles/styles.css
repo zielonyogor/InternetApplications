@@ -53,7 +53,7 @@ input {
   padding: 12px;
   border: none;
   background-color: rgb(223, 190, 141);
-  border-bottom: 2px solid black;
+  border: 2px solid black;
 }
 
 .filter-container {
@@ -92,16 +92,17 @@ input {
   background-image: url("../images/page.jpg");
   padding: 10px;
 }
-.list-container .list-panel .list-item {
+
+.list-item {
   margin: 20px;
   padding: 8px;
   border: 2px solid black;
 }
-.list-container .list-panel .list-item p:nth-child(1) {
+.list-item p:nth-child(1) {
   font-weight: 700;
   font-size: 1.2rem;
 }
-.list-container .list-panel .list-item p:nth-child(2) {
+.list-item p:nth-child(2) {
   color: gray;
 }
 
@@ -143,6 +144,7 @@ input {
   width: 30px;
   height: 30px;
   border-radius: 50%;
+  background-color: rgb(223, 190, 141);
   text-align: center;
 }
 .nav-page span {
