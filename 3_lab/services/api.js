@@ -12,18 +12,10 @@ export async function getAllElixirs() {
     }
     catch (error) {
         console.error('Failed to fetch:', error);
+        alert('Failed to load elixirs. Try again later.');
         return [];
     }
     
-}
-
-/**
- * Returns elixirs from start_index to end_index, defaults to first end_index elements
- * @param {int} start_index  - Inclusive starting index
- * @param {int} end_index - Exclusive ending index
- */
-export function getElixirs(start_index = 0, end_index = 20) {
-    return elixirs.slice(start_index, end_index);
 }
 
 /**
