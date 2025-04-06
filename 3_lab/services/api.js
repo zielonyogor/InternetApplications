@@ -12,7 +12,7 @@ export async function getAllElixirs() {
     }
     catch (error) {
         console.error('Failed to fetch:', error);
-        alert('Failed to load elixirs. Try again later.');
+        //alert('Failed to load elixirs. Try again later.');
         return [];
     }
     

@@ -1,9 +1,14 @@
 body {
   margin: 0;
   padding: 20px;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: "Yusei Magic";
   display: flex;
   flex-wrap: wrap;
+  background-image: url("../images/wallpaper stars - Luciana Palomino.jpg");
+}
+
+input {
+  font-family: "Yusei Magic";
 }
 
 .page-title {
@@ -11,8 +16,20 @@ body {
   padding: 8px;
   margin-top: 4px;
   margin-bottom: 20px;
+  font-size: 3rem;
+  text-align: center;
+  color: rgb(255, 250, 197);
+  animation: text-glow 2s ease-in-out infinite alternate;
 }
 
+@keyframes text-glow {
+  from {
+    text-shadow: 0 0 5px rgb(255, 250, 197), 0 0 10px rgb(255, 250, 197), 0 0 15px rgb(255, 250, 197);
+  }
+  to {
+    text-shadow: 0 0 10px rgb(255, 250, 197), 0 0 20px white, 0 0 30px white;
+  }
+}
 .col-7 {
   width: 58.3333%;
 }
@@ -21,17 +38,58 @@ body {
   width: 41.6666%;
 }
 
+.search-container {
+  display: flex;
+  margin-bottom: 18px;
+}
+.search-container .search-bar {
+  box-sizing: border-box;
+  margin: 8px 8px;
+  flex-grow: 1;
+}
+.search-container .search-bar input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background-color: rgb(223, 190, 141);
+  border-bottom: 2px solid black;
+}
+
+.filter-container {
+  align-content: center;
+}
+.filter-container .label-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  box-sizing: border-box;
+  width: 28px;
+  height: 28px;
+  padding: 4px;
+  margin: 4px 4px 4px auto;
+  background-color: rgb(223, 190, 141);
+  border: 2px solid black;
+}
+.filter-container .label-toggle hr {
+  box-sizing: border-box;
+  margin: 0;
+  width: 100%;
+  border: 1px solid black;
+}
+
 .list-container {
   box-sizing: border-box;
-  background-color: cadetblue;
+  background-color: rgb(112, 52, 14);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 20px;
+  box-shadow: 0px 10px 15px black;
 }
 .list-container .list-panel {
-  background-color: aliceblue;
+  background-image: url("../images/page.jpg");
   padding: 10px;
 }
 .list-container .list-panel .list-item {
@@ -57,24 +115,42 @@ body {
   box-sizing: border-box;
   margin: 100px;
   padding: 20px;
-  background-color: cadetblue;
+  background-image: url("../images/page.jpg");
+  box-shadow: 0px 10px 15px black;
+}
+.details-card h3 {
+  font-weight: bolder;
+  font-size: 1.6rem;
+  margin: 10px;
+}
+.details-card table tbody tr td:nth-child(1) {
+  padding-right: 40px;
+  font-weight: bold;
+}
+.details-card table tbody tr td:nth-child(2) {
+  color: #333333;
 }
 
-.search-bar {
-  box-sizing: border-box;
-  margin: 8px 0px;
-  width: 100%;
+.nav-page {
+  width: 80%;
+  margin: auto;
   display: flex;
+  justify-content: center;
+  align-content: center;
 }
-.search-bar input {
+.nav-page button {
   box-sizing: border-box;
-  flex-grow: 1;
-  padding: 8px;
-  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  text-align: center;
+}
+.nav-page span {
+  margin: 0 16px;
 }
 
-.hidden {
-  display: none;
+.loading-msg {
+  text-align: center;
 }
 
 .hidden-checkbox {
@@ -89,11 +165,14 @@ body {
   display: none;
   z-index: 2;
   position: absolute;
-  background-color: dimgrey;
-  border: black;
-  border-width: 1px;
-  border-style: solid;
+  background-image: url("../images/page.jpg");
+  border: 4px solid rgb(112, 52, 14);
+  box-shadow: 0px 8px 8px black;
   padding: 8px;
+}
+.toggle-content ul {
+  list-style-type: none;
+  padding: 10px 10px;
 }
 
 /*# sourceMappingURL=styles.css.map */

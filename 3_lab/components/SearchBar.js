@@ -8,7 +8,7 @@
 export function SearchBar(arrayForSearch, searchProperty, onSearchResult) {
     const searchElement = document.createElement('div');
     searchElement.innerHTML = `
-        <input type="text" id="search-input" placeholder="Search here" />
+        <input type="text" id="search-input" autocomplete="off" placeholder="Search here" />
     `;
     
     const inputField = searchElement.querySelector('#search-input');

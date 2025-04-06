@@ -1,12 +1,16 @@
 
 export function ListFilter(array, filterProperty, filterOptions, onFilterChange) {
     const filterElement = document.createElement('div');
+    filterElement.classList.add('filter-container');
     filterElement.innerHTML = `
-        <label for="toggleVendors" class="label-toggle form-control">
-              Filter by ${filterProperty}
-          </label>
+        <label for="toggleVendors" class="label-toggle">
+              <hr />
+              <hr />
+              <hr />
+        </label>
         <input type="checkbox" id="toggleVendors" class="hidden-checkbox">
         <div class="toggle-content">
+          <p>Filter by ${filterProperty}</p>
           <ul>
             ${filterOptions.map(option => 
               `<li><input type="checkbox" value="${option}" />${option}</li>`

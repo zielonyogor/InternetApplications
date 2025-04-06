@@ -1,10 +1,22 @@
+$font-color: black;
+$title-color: rgb(255, 250, 197);
+$secondary-color: rgb(223, 190, 141);
+$book-color: rgb(112, 52, 14);
+$page-url: '../images/page.jpg';
+
 body {
     margin: 0;
     padding: 20px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Yusei Magic';
 
     display: flex;
     flex-wrap: wrap;
+
+    background-image: url('../images/wallpaper\ stars\ -\ Luciana\ Palomino.jpg');
+}
+
+input {
+    font-family: 'Yusei Magic';
 }
 
 .page-title {
@@ -12,6 +24,20 @@ body {
     padding: 8px;
     margin-top: 4px;
     margin-bottom: 20px;
+    font-size: 3rem;
+    text-align: center;
+    color: $title-color;
+
+    animation: text-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes text-glow {
+  from {
+    text-shadow: 0 0 5px $title-color, 0 0 10px $title-color, 0 0 15px $title-color;
+  }
+  to {
+    text-shadow: 0 0 10px $title-color, 0 0 20px lighten($title-color, 20%), 0 0 30px lighten($title-color, 30%);
+  }
 }
 
 .col-7 {
@@ -22,17 +48,64 @@ body {
     width: 41.6666%;
 }
 
+.search-container {
+    display: flex;
+    margin-bottom: 18px;
+
+    .search-bar {
+        box-sizing: border-box;
+        margin: 8px 8px;
+        flex-grow: 1;
+        
+        input {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background-color: $secondary-color;
+            border-bottom: 2px solid black;
+        }
+    }
+    
+}
+
+.filter-container {
+    align-content: center;
+
+    .label-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        box-sizing: border-box;
+        width: 28px;
+        height: 28px;
+        padding: 4px;
+        margin: 4px 4px 4px auto;
+        
+        background-color: $secondary-color;
+        border: 2px solid $font-color;
+        hr {
+            box-sizing: border-box;
+            margin: 0;
+            width: 100%;
+            border: 1px solid $font-color; 
+        }
+    }
+}
+
+
 .list-container {
     box-sizing: border-box;
-    background-color: cadetblue;
+    background-color: $book-color;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 20px;
+    box-shadow: 0px 10px 15px black;
 
     .list-panel {
-        background-color: aliceblue;
+        background-image: url($page-url);
         padding: 10px;
     
         .list-item {
@@ -62,25 +135,53 @@ body {
     margin: 100px;
     padding: 20px;
 
-    background-color: cadetblue;
-}
+    background-image: url($page-url);
+    box-shadow: 0px 10px 15px black;
 
-.search-bar {
-    box-sizing: border-box;
-    margin: 8px 0px;
-    width: 100%;
-    display: flex;
+    h3 {
+        font-weight: bolder;
+        font-size: 1.6rem;
+        margin: 10px;
+    }
+
+    table {
+        tbody {
+          tr {
+            td:nth-child(1) {
+              padding-right: 40px;
+              font-weight: bold;
+            }
     
-    input {
-        box-sizing: border-box;
-        flex-grow: 1;
-        padding: 8px;
-        border: none;
+            td:nth-child(2) {
+              color: lighten($font-color, 20%);
+            }
+          }
+        }
     }
 }
 
-.hidden {
-    display: none;
+.nav-page {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
+    button {
+        box-sizing: border-box;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        text-align: center;
+    }
+
+    span {
+        margin: 0 16px;
+    }
+}
+
+.loading-msg {
+    text-align: center;
 }
 
 // Filter
@@ -97,9 +198,13 @@ body {
     display: none;
     z-index: 2;
     position: absolute;
-    background-color: dimgrey;
-    border: black;
-    border-width: 1px;
-    border-style: solid;
+    background-image: url($page-url);
+    border: 4px solid $book-color;
+    box-shadow: 0px 8px 8px black;
     padding: 8px;
-  }
+
+    ul {
+        list-style-type: none;
+        padding: 10px 10px;
+    }
+}
