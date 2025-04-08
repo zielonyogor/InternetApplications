@@ -17,8 +17,14 @@ export function Pagination(array, numberOfResults, onPageChanged, currentPage) {
     const prevPageButton = paginationElement.querySelector('#btn-prev-page');
     const nextPageButton = paginationElement.querySelector('#btn-next-page');
 
-    prevPageButton.addEventListener('click', () => onPageChanged(currentPage - 1));
-    nextPageButton.addEventListener('click', () => onPageChanged(currentPage + 1));
+    prevPageButton.addEventListener('click', () => {
+        onPageChanged(currentPage - 1);
+        window.scrollTo(0, 0);
+    });
+    nextPageButton.addEventListener('click', () => {
+        onPageChanged(currentPage + 1);
+        window.scrollTo(0, 0);
+    });
     
     return paginationElement;
 }
