@@ -54,5 +54,5 @@ function showResults() {
 
 async function showDetails(id) {
     detailsContainer.innerHTML = '';
-    detailsContainer.appendChild(await ElixirDetails(id));
+    detailsContainer.appendChild(ElixirDetails(id));
 }
