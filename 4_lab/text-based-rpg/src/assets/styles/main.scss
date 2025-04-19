@@ -1,0 +1,81 @@
+@use "@/assets/styles/colors" as *;
+@use 'sass:color';
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: $background-color;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: $font-color-dark;
+}
+
+h1 {
+    font-size: xx-large;
+    margin-left: 6vw;
+}
+
+.rpg-engine-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.story-container {
+    height: 60vh;
+    background-color: $primary-color;
+    overflow-y: auto;
+
+    border: solid 10px $tertiary-color;
+    border-radius: 8px;
+
+    p {
+        padding: 0.5em 1em;
+        margin: 0;
+        border-bottom: solid 2px $secondary-color;
+
+        &:last-child {
+            border: none;
+        }
+
+        &.choice-text {
+            font-style: italic;
+            opacity: 80%;
+            padding-left: 2rem;
+        }
+    }
+}
+
+.choices-container {
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 16px 0;
+
+    .choice-btn {
+        box-sizing: border-box;
+        margin: 20px;
+        width: 100%;
+        padding: 10px;
+        
+        border: dotted 6px $secondary-color;
+        border-radius: 16px;
+        background-color: $primary-color;
+
+        font-size: medium;
+        font-weight: 600;
+        color: $font-color-dark;
+    }
+}
+
+.continue-btn {
+    border: none;
+    color: $font-color-light;
+    background-color: $font-color-dark;
+    font-size: 1.4rem;
+    font-weight: 700;
+    padding: 16px;
+    border-radius: 20px;
+}

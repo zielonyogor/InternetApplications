@@ -1,0 +1,43 @@
+{
+    "start": {
+        "id": "start",
+        "text": [
+            "Yet another basic, ordinary, boring day.",
+            "You wish you were a cat.",
+            "But life isn't always sunshine and lolipops.",
+            "...",
+            "Wait... You see that?",
+            "A KITTYYYY!!!! AAAAAHHHH!!",
+            "What a cute kitty.",
+            "\"Meow\"",
+            "\"Nyan, Hello there\"",
+            "\"Yes, I'm a talking cat.\"",
+            "What? A talking cat? That's an Easter miracle!",
+            "Forget about Jesus and eggs. This is way cooler.",
+            "\"Mreow. Yeah I guess I'm way cooler.\"",
+            "\"Anyway I've got some stuff to do in the cat realm.\"",
+            "\"You know, saving the day and other stuff. And I could really use some help\"",
+            "\"Would you like to become a cat for a day and help me?\""
+        ],
+        "choices": [
+            { "text": "YES PLEASE", "nextId": "adventure_start" },
+            { "text": "No, go away", "nextId": "bad_ending" }
+        ]
+    },
+    "bad_ending": {
+        "id": "bad_ending",
+        "text": [
+            "\"Meow? Really? I guess I judged you wrong.\"",
+            "\"I thought you were cool. Goodnyan I guess.\"",
+            "You're so boring...",
+            "You've got talking cat and you didn't even care to go on adventure smh",
+            "That's it. That's your bad ending bro"
+        ]
+    },
+    "adventure_start": {
+        "id": "adventure_start",
+        "text": [
+            "You go on adventure...."
+        ]
+    }
+}
