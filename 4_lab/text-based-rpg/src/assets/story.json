@@ -37,7 +37,36 @@
     "adventure_start": {
         "id": "adventure_start",
         "text": [
-            "You go on adventure...."
+            "And that's how your adventure starts.",
+            "\"I'm Jelly by the way. What your cat name will be?\"",
+            "You pick name Puffy. It's cute and round like you.",
+            "You both go into the trash bin.",
+            "It's smelly in here. You are guided by Jelly's voice.",
+            "You are going through all the trash. In the dark you see something shining next to you.",
+            "Would you like to pick it up?"
+        ],
+        "choices": [
+            {"text": "Pick it up", "successChance": 0.2, "nextId": "pick_cube", "failId": "explode_world"},
+            {"text": "Leave it be", "nextId": "continue_trash"}
+        ]
+    },
+    "explode_world": {
+        "text": [
+            "You try to pick it up",
+            "Just as you touch strange thing with your whiskers. The light starts pulsating",
+            "\"MREOW. What are you doing?! That's a very secret, very powerful cube that can end the world\"",
+            "Just as Jelly says this, the world explodes.",
+            "Well...",
+            "Nice adventure though"
+        ]
+    },
+    "pick_cube": {
+        "variables": [
+            {"name": "cube", "value": "1"}
+        ],
+        "text": [
+            "You try to pick up the cube",
+            "And you succeed."
         ]
     }
 }
