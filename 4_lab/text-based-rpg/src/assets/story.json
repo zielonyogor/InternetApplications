@@ -47,7 +47,7 @@
         ],
         "choices": [
             {"text": "Do a backflip and jump in", "successChance": 0.2, "nextId": "backflip", "failId": "broken_butt"},
-            {"text": "Jump in normally", "nextId": "start_magic_world"}
+            {"text": "Jump in normally", "nextId": "jump_normal"}
         ]
     },
     "broken_butt": {
@@ -56,16 +56,35 @@
             "You embarassed yourself in front of the cat.",
             "\"Just jump in dude.\"",
             "And so you jump normally"
-        ]
+        ],
+        "autoNextId": "start_magic_world"
     },
     "backflip": {
         "text": [
-
-        ]
+            "Damn gurl, that was some sick backflip.",
+            "Even the cat is impressed."
+        ],
+        "autoNextId": "start_magic_world"
+    },
+    "jump_normal": {
+        "text": [
+            "You jumped in normally.",
+            "Really? You are a freaking cat and you're so basic.",
+            "Boring..."
+        ],
+        "autoNextId": "start_magic_world"
     },
     "start_magic_world": {
         "text": [
-            
+            "And so you are placed in a different new magic cat world",
+            "You probably did something cool there...",
+            "Hey, don't ask me.",
+            "I may be your omnipresent narrator in this story.",
+            "But this omnipresent narrator is also a student.",
+            "And I'm too tired to care for the end of your story.",
+            "Use your imagination or something",
+            "This omnipresent narrator is now going to bake cookies and write raport for Parallel Processing.",
+            "The End."
         ]
     }
 }

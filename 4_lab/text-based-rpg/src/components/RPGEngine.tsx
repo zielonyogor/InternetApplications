@@ -1,9 +1,9 @@
 import React from "react";
 import story from "@/assets/story.json"
 import Text from "./Text";
-import StoryNode from "../types/StoryNode";
+import StoryNode from "@/assets/types/StoryNode";
 import ChoiceButton from "./ChoiceButton";
-import Choice from "../types/Choice";
+import Choice from "@/assets/types/Choice";
 
 
 export default function RPGEngine() {
@@ -25,13 +25,20 @@ export default function RPGEngine() {
             setReadLines(prevLines => [...prevLines, {text: currentNode.text[lineIndex + 1], isChoice: false}]);
             setLineIndex(prevIndex => prevIndex + 1);
         }
+        else if(currentNode.autoNextId) {
+            const newNode = story[currentNode.autoNextId];
+            setCurrentNode(newNode);
+            setLineIndex(0);
+            setReadLines(prevLines => [...prevLines, {text: newNode.text[0], isChoice: false}]); // load first line
+        }
     }
 
     function onChoiceClicked(selectedChoice : Choice) {
         setReadLines(prevLines => [...prevLines, {text: selectedChoice.text, isChoice: true}]);
         if(selectedChoice.successChance !== undefined) {
             const randomVal = Math.random();
-            if(selectedChoice.successChance >= randomVal) {
+            console.log(`${randomVal} vs ${parseFloat(selectedChoice.successChance)}`);
+            if(parseFloat(selectedChoice.successChance) >= randomVal) {
                 setCurrentNode(story[selectedChoice.failId]);
             }
             else {

@@ -4,5 +4,5 @@ export default interface StoryNode{
     id: string;
     text: Array<string>;
     choices?: Array<Choice>;
-    
+    autoNextId?: string;
 }
