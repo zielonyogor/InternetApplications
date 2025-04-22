@@ -42,31 +42,30 @@
             "You pick name Puffy. It's cute and round like you.",
             "You both go into the trash bin.",
             "It's smelly in here. You are guided by Jelly's voice.",
-            "You are going through all the trash. In the dark you see something shining next to you.",
-            "Would you like to pick it up?"
+            "You are going through all the trash.", 
+            "Finally at the bottom of the trash bin there it is: a magic portal to the kitty world."
         ],
         "choices": [
-            {"text": "Pick it up", "successChance": 0.2, "nextId": "pick_cube", "failId": "explode_world"},
-            {"text": "Leave it be", "nextId": "continue_trash"}
+            {"text": "Do a backflip and jump in", "successChance": 0.2, "nextId": "backflip", "failId": "broken_butt"},
+            {"text": "Jump in normally", "nextId": "start_magic_world"}
         ]
     },
-    "explode_world": {
+    "broken_butt": {
         "text": [
-            "You try to pick it up",
-            "Just as you touch strange thing with your whiskers. The light starts pulsating",
-            "\"MREOW. What are you doing?! That's a very secret, very powerful cube that can end the world\"",
-            "Just as Jelly says this, the world explodes.",
-            "Well...",
-            "Nice adventure though"
+            "You know damn well you aren't some IShowSpeed. You can't do a backflip.",
+            "You embarassed yourself in front of the cat.",
+            "\"Just jump in dude.\"",
+            "And so you jump normally"
         ]
     },
-    "pick_cube": {
-        "variables": [
-            {"name": "cube", "value": "1"}
-        ],
+    "backflip": {
         "text": [
-            "You try to pick up the cube",
-            "And you succeed."
+
+        ]
+    },
+    "start_magic_world": {
+        "text": [
+            
         ]
     }
 }
