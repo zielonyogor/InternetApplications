@@ -1,3 +1,6 @@
 [submodule "4_lab/buldak-collection"]
 	path = 4_lab/buldak-collection
 	url = https://github.com/zielonyogor/buldak-collection.git
+[submodule "5_lab/online-shop"]
+	path = 5_lab
+	url = https://github.com/zielonyogor/online-shop.git

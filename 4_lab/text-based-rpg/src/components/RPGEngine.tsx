@@ -38,7 +38,7 @@ export default function RPGEngine() {
         if(selectedChoice.successChance !== undefined) {
             const randomVal = Math.random();
             console.log(`${randomVal} vs ${parseFloat(selectedChoice.successChance)}`);
-            if(parseFloat(selectedChoice.successChance) >= randomVal) {
+            if(parseFloat(selectedChoice.successChance) <= randomVal) {
                 setCurrentNode(story[selectedChoice.failId]);
             }
             else {
