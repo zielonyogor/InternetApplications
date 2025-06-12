@@ -47,6 +47,23 @@ const browser = await puppeteer.launch({
 
 const page = await browser.newPage();
 
+await page.evaluateOnNewDocument(function() {
+  navigator.geolocation.getCurrentPosition = function (cb) {
+    setTimeout(() => {
+      cb({
+        'coords': {
+          accuracy: 21,
+          altitude: null,
+          altitudeAccuracy: null,
+          heading: null,
+          latitude: 23.129163,
+          longitude: 113.264435,
+          speed: null
+        }
+      })
+    }, 1000)
+  }
+});
 await page.goto("https://www.barnesandnoble.com/b/books/graphic-novels-comics-manga/_/N-1fZ29Z8q8Z2y35?Ns=P_Sales_Rank", {
     waitUntil: "domcontentloaded",
 });
